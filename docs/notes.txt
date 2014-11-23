@@ -1,0 +1,39 @@
+Data is taken from only 5 users
+
+Experiment abstract:
+http://groupware.les.inf.puc-rio.br/public/papers/2013.Velloso.QAR-WLE.pdf
+
+Participants were asked to perform one set of 10 repetitions
+of the Unilateral Dumbbell Biceps Curl in five different fash-
+ions: exactly according to the specification (Class A), throw-
+ing the elbows to the front (Class B), lifting the dumbbell
+only halfway (Class C), lowering the dumbbell only halfway
+(Class D) and throwing the hips to the front (Class E)
+
+For feature extraction we used a sliding window approach
+with different lengths from 0.5 second to 2.5 seconds, with
+0.5 second overlap
+
+ For the Euler angles of each of the
+four sensors we calculated eight features: mean, variance,
+standard deviation, max, min, amplitude, kurtosis and skew-
+ness, generating in total 96 derived feature sets
+
+ 17 features were selected:
+in the belt, were selected the mean and variance of the roll,
+maximum, range and variance of the accelerometer vector,
+variance of the gyro and variance of the magnetometer
+
+the arm, the variance of the accelerometer vector and the
+maximum and minimum of the magnetometer were selected.
+In the dumbbell, the selected features were the maximum of
+the acceleration, variance of the gyro and maximum and
+minimum of the magnetometer, while in the glove, the sum
+of the pitch and the maximum and minimum of the gyro
+were selected.
+
+
+They use random forest with bagging. We used 10 random forests and each forest was
+implemented with 10 trees. The classifier was tested with
+10-fold cross-validation and different windows sizes, all of
+them with 0.5s overlapping (except the window with 0.5s).
